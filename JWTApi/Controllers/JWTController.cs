@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JWTApi.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,7 @@ namespace JWTApi.Controllers
 
         public JWTController(IConfiguration config)
         {
-            this._config=config;
+            _config=config;
         }
 
         [AllowAnonymous]
@@ -39,7 +40,7 @@ namespace JWTApi.Controllers
         private bool Authenticate(LoginModel login)
         {
             if(login.UserName=="mouad")
-            return true;
+                return true;
             return false;
         }
         private string BuildToken(){
@@ -53,7 +54,9 @@ namespace JWTApi.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public ActionResult<RegistrationModel> Register(RegistrationModel registration)
+        [AllowAnonymous]
+        [HttpPost("Register")]
+        public ActionResult<UserModel> Register(UserModel registration)
         {
             return registration;
         }
