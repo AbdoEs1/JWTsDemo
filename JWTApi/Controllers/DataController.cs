@@ -7,6 +7,6 @@ public class DataController : ControllerBase
 {
     [HttpGet("getData"),Authorize]
     public string GetData(){
-        return "data";
+        return "data API";
     }   
 }
