@@ -1,0 +1,51 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Application Angular</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/logout" routerLinkActive="active">logout</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
+<div class="container">
+  
+<h2>{{welcome}}</h2>
+<br>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <!-- FirstName Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+  <!-- LastName Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+    <!-- UserName Column -->
+    <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+    <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</div>
